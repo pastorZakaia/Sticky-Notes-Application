@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Bulletin Board - Edit Post
+    {% else %}
+        Bulletin Board - Create Post
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Post</h2>
+    <form method="post" action="{% if form.instance.pk %}{% url 'post_update' 
+            pk=form.instance.pk %}{% else %}{% url 'post_create' %}{% endif %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'post_list' %}">Back to Post List</a>
+{% endblock %}
