@@ -1,0 +1,31 @@
+<!-- posts/templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sticky Notes App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'post/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Sticky Notes App{% endblock %}</h1>
+        <h2><p>Welcome to PastorZakaia's sticky notes app</p>
+            <p>Try it out <br> Jot down your thoughts!</p></h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'post_list' %}">Home</a></li>
+                <li><a href="{% url 'post_create' %}">Create Note</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Sticky Notes App// PastorZakaia</p>
+    </footer>
+
+</body>
+</html>
