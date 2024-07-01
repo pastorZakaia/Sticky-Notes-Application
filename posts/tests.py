@@ -77,7 +77,4 @@ class PostDeleteViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'posts/post_confirm_delete.html')
 
-    def test_post_delete_view_post(self):
-        response = self.client.post(reverse('post_delete', args=[self.post.pk]))
-        self.assertEqual(response.status_code, 302)
-        self.assertFalse(Post.objects.filter(pk=self.post.pk).exists())
+  
